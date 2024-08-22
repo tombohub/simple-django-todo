@@ -1,0 +1,33 @@
+# Python
+*.py[cod]
+__pycache__/
+*.so
+
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+*.sqlite3-journal
+*.db-journal
+*.pdf
+*.DS_Store
+*.coverage
+*.egg-info/
+*.eggs/
+*.env
+*.venv
+*.env.bak
+*.venv.bak
+*.envrc
+*.mypy_cache/
+*.pytest_cache/
+*.tox/
+*.vscode/
+*.idea/
+*.ipynb_checkpoints/
+*.pylint.d/
