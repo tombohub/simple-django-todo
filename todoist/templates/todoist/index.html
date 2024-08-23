@@ -11,6 +11,12 @@
 
 <body>
 
+    {% if messages %}
+    {% for message in messages %}
+    <li>{{message}}</li>
+    {% endfor %}
+    {% endif %}
+
     <form method="post" action="{% url 'create' %}">
         {% csrf_token %}
         {{ form.as_p }}

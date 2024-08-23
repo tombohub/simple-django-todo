@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import TodoForm
@@ -6,15 +7,9 @@ from .models import Todo
 
 # Create your views here.
 def index(request):
-    if request.method == "POST":
-        form = TodoForm(request.POST)
-        if form.is_valid():
-            form.save()
-    else:
-        form = TodoForm()
-        todos = Todo.objects.all()
-        context = {"todos": todos, "form": form}
-
+    form = TodoForm()
+    todos = Todo.objects.all()
+    context = {"todos": todos, "form": form}
     return render(request, "todoist/index.html", context)
 
 
@@ -23,11 +18,13 @@ def create(request):
         form = TodoForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Todo create success")
             return redirect("home")
     else:
         form = TodoForm()
-
-    return render(request, "todoist/create.html", {"form": form})
+    todos = Todo.objects.all()
+    context = {"todos": todos, "form": form}
+    return render(request, "todoist/index.html", context)
 
 
 def delete(request, todo_pk):

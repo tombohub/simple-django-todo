@@ -1,3 +1,4 @@
+from django.core.validators import MinLengthValidator
 from django.db import models
 
 
@@ -7,5 +8,5 @@ class Todo(models.Model):
         DONE = "Done", "Done"
         NOT_DONE = "Not Done", "Not Done"
 
-    title = models.CharField(max_length=20)
+    title = models.CharField(max_length=20, validators=[MinLengthValidator(3)])
     status = models.TextField(choices=Status.choices, default=Status.NOT_DONE)
